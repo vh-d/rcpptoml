@@ -94,7 +94,7 @@ inline time_t local_timegm(struct tm *tm) {
 
 SEXP getValue(const std::shared_ptr<cpptoml::base>& base) {
     if (auto v = base->as<std::string>()) {
-        std::string s(escapeString(v->get()));
+        std::string s(v->get());
         return Rcpp::wrap(s);
     } else if (auto v = base->as<int64_t>()) {
         std::int64_t s(v->get());
